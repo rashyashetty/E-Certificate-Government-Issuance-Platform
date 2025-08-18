@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Website</title>
+  <style>
+    /* General Styles */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  scroll-behavior: smooth;
+}
+
+header {
+  background: linear-gradient(90deg, #007bff, #0d0f11);
+  color: white;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  margin-right: 30px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+nav ul li {
+  margin: 0 20px;
+  position: relative;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.search-tab {
+  display: flex;
+  align-items: center;
+}
+
+.search-tab input {
+  padding: 8px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  margin-right: -1px;
+}
+
+
+
+/* Dropdown Menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu li:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu li a {
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f9f9f9;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+
+
+/* General Button Styles */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px; /* Reduced size for Join Us button */
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Specific Search Button Style */
+.search-tab button {
+  padding: 10px 20px; /* Slightly larger for emphasis */
+  background-color: #28a745; /* Green for distinction */
+  color: white;
+  border-radius: 0 5px 5px 0;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
+}
+
+.search-tab button:hover {
+  background-color: #218838;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Center the Join Us Button */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Ensure content is centered */
+  padding: 100px 20px;
+  height: 70vh; /* Adjusted height */
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX7GLL4dweTGkbXLbdBjms3ww4DR3Qk1pZXQ&s');
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+#join-btn {
+  width: auto; /* Automatically adjust width based on content */
+  padding: 8px 20px; /* Maintain button size */
+  background-color: #007bff;
+  border-radius: 5px;
+  margin-top: 20px; /* Adds spacing from other elements */
+}
+
+#join-btn:hover {
+  background-color: #dfebf8;
+  transform: scale(1.05);
+}
+
+/* About Section */
+#about {
+  padding: 80px 20px;
+  background-color: #f9f9f9;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#about h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+/* Contact Section */
+#contact {
+  padding: 80px 20px;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.contact-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.contact-card i {
+  font-size: 40px;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.contact-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.contact-card p {
+  font-size: 16px;
+  color: #555;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">CertiGov</div>
+      <ul>
+        <li><a href="#" id="home">Home</a></li>
+        <li class="dropdown">
+          <a href="#">Service</a>
+          <ul class="dropdown-menu">
+            <li><a href="login.html">Income Certificate</a></li>
+            <li><a href="login.html">Caste Certificate</a></li>
+            <li><a href="login.html">Death Certificate</a></li>
+          </ul>
+        </li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="search-tab">
+          <input type="text" placeholder="Search...">
+          <button type="button" id="search-btn">Search</button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="main-content">
+      <h1>E-Certificate<br>Government Issuance <br>Platform</h1>
+      <p>Secued. Swift. Certified.</p>
+      <button id="join-btn"><a href="/login">JOIN US</a></button>
+    </section>
+    
+    <section id="about">
+      <h2>About Us</h2>
+      <p>We are <b>DevDreamers</b>,<br> a team of four passionate developers who love creating websites. <br>
+        We work on both the front end, designing how things look, and the back end, making sure everything works smoothly. <br>
+        Each of us brings something unique to the team, from making websites user-friendly and functional to solving problems and ensuring everything runs without issues.<br> 
+        Together, we share ideas, solve challenges, and build websites that are simple, useful, and reliable.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <i class="fa fa-envelope"></i>
+          <h3>Email</h3>
+          <p>example@example.com</p>
+        </div>
+        <div class="contact-card">
+          <i class="fa fa-phone"></i>
+          <h3>Phone</h3>
+          <p>+1234567890</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  // Smooth scrolling for navigation links
+  document.querySelectorAll("nav ul li a").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const targetId = link.getAttribute("href").substring(1); // Get the ID without '#'
+      if (targetId && document.getElementById(targetId)) {
+        event.preventDefault();
+        document.getElementById(targetId).scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    });
+  });
+
+  // Handle Search Button Click
+  const searchBtn = document.getElementById("search-btn");
+  const searchInput = document.querySelector(".search-tab input");
+  searchBtn.addEventListener("click", () => {
+    const query = searchInput.value.trim();
+    if (query) {
+      alert(`Search functionality not implemented. Your query: ${query}`);
+      // You can add functionality to redirect or fetch search results here.
+    } else {
+      alert("Please enter a search query.");
+    }
+  });
+
+  // Dropdown menu handling
+  const dropdownLinks = document.querySelectorAll(".dropdown-menu li a");
+  dropdownLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const targetUrl = link.getAttribute("href");
+      if (targetUrl) {
+        window.location.href = targetUrl; // Redirect to the target page
+      }
+    });
+  });
+});
+
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</body>
+</html>

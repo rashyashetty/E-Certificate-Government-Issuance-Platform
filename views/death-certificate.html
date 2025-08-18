@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Death Certificate Application Form</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid #000;
+    padding: 20px;
+}
+h2 {
+    text-align: center;
+}
+label {
+    font-weight: bold;
+}
+input[type="text"], input[type="date"], input[type="email"], input[type="file"], select {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+fieldset {
+    border: 1px solid #ccc;
+    padding: 15px;
+}
+.custom-file-upload {
+    cursor: pointer;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+.otp-button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.bottom-right-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+button[type="submit"] {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button[type="submit"]:hover,
+.otp-button:hover,
+.custom-file-upload:hover {
+    background-color: #45a049;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>DEATH CERTIFICATE APPLICATION FORM</h2>
+        
+      <form action="/submit-death-certificate" method="POST" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Fill the Blanks Using Capital Letters</legend>
+                <label>Date of Death: <input type="date" name="date_of_death"></label><br>
+                <label>Gender: 
+                    <select name="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </label><br>
+                <label>Deceased Name: <input type="text" name="deceased_name"></label><br>
+                <label>Care of: 
+                    <input type="radio" name="care_of" value="father"> Father
+                    <input type="radio" name="care_of" value="husband"> Husband
+                </label><br>
+                <label>Father/ Husband Name: <input type="text" name="father_husband_name"></label><br>
+                <label>Deceased Age (In Years): <input type="text" name="deceased_age_years"></label>
+                <label>Age (In Months): <input type="text" name="deceased_age_months"></label>
+                <label>Age (In Days): <input type="text" name="deceased_age_days"></label>
+                <label>Age (In Hours): <input type="text" name="deceased_age_hours"></label><br>
+
+                <h3>Permanent Address</h3>
+                <label>Address Line: <input type="text" name="address_line"></label><br>
+                <label>Country: <input type="text" name="country"></label>
+                <label>State: <input type="text" name="state"></label>
+                <label>District: <input type="text" name="district"></label><br>
+                <label>Pin: <input type="text" name="pin"></label>
+                <label>Mobile No: <input type="text" name="mobile_no"></label>
+                <label>Email ID: <input type="email" name="email"></label><br>
+
+                <h3>Place of Death</h3>
+                <label>
+                    <input type="radio" name="place_of_death" value="house"> House
+                    <input type="radio" name="place_of_death" value="hospital"> Hospital
+                </label><br>
+                <label>Place of Death: <input type="text" name="place_of_death"></label><br>
+                <label>Address Line: <input type="text" name="death_address_line"></label><br>
+                <label>Country: <input type="text" name="death_country"></label>
+                <label>State: <input type="text" name="death_state"></label>
+                <label>District: <input type="text" name="death_district"></label><br>
+                <label>Pin: <input type="text" name="death_pin"></label><br>
+
+                <h3>Upload Required Documents</h3>
+                <div class="file-uploads">
+                    <div>
+                        <label for="aadhaar-upload" class="custom-file-upload">Aadhar Proof:</label>
+                        <input type="file" id="aadhaar-upload" name="aadhaar_card">
+                    </div>
+                    <div>
+                        <label for="birth-proof-upload" class="custom-file-upload">BirthCertificate Proof:</label>
+                        <input type="file" id="birth-proof-upload" name="birthcertificate_proof">
+                    </div>
+                    <div>
+                        <label for="medical-proof-upload" class="custom-file-upload">MedicalCertificate Proof:</label>
+                        <input type="file" id="medical-proof-upload" name="medicalcertificate_proof">
+                    </div>
+                </div>                
+
+                <h3>Informant / Applicant Name and Address</h3>
+                <label>Name: <input type="text" name="informant_name"></label><br>
+                <label>Sex: 
+                    <input type="radio" name="informant_sex" value="male"> Male
+                    <input type="radio" name="informant_sex" value="female"> Female
+                </label><br>
+                <label>Same as Permanent Address: 
+                    <input type="checkbox" name="same_as_permanent_address">
+                </label><br>
+                <label>Relation with the Deceased: <input type="text" name="relation_with_deceased"></label><br>
+                <label>Identity Proof Submitted: <input type="text" name="identity_proof"></label><br>
+            </fieldset>
+            <!-- Add Choose File and Send OTP Buttons -->
+            <div class="bottom-right-buttons">
+                <!-- Choose File Button -->
+                <label for="file-upload" class="custom-file-upload">Choose File</label>
+                <input type="file" id="file-upload" name="file_upload" style="display: none;">
+                
+                <!-- Send OTP Button -->
+                <button type="button" class="otp-button" id="send-otp">Send OTP</button>
+                
+                <!-- OTP Textbox -->
+                <div id="otp-box" style="display: none; margin-top: 0px;">
+                    <label for="otp-input" style="display: block; margin-bottom: 5px;"></label>
+                    <input type="text" id="otp-input" name="otp" placeholder="Enter OTP" style="padding: 5px; width: 200px;">
+                </div>
+            </div>
+            
+            <script>
+                // Show OTP input box when "Send OTP" is clicked
+                document.getElementById('send-otp').addEventListener('click', function () {
+                    // Send OTP functionality (You can add your AJAX call here)
+                    alert("OTP has been sent to your phone number.");
+            
+                    // Display the OTP box
+                    document.getElementById('otp-box').style.display = 'block';
+                });
+            </script>
+            
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div id="responseContainer"></div>
+
+    <script>
+        document.getElementById('deathCertificateForm').addEventListener('submit', async function(event) {
+          event.preventDefault();  // Prevent form from submitting the traditional way
+      
+          const formData = new FormData(this);
+      
+          try {
+            const response = await fetch(this.action, {
+              method: 'POST',
+              body: formData
+            });
+      
+            const data = await response.json();
+            
+            // Log the response data to check the structure
+            console.log('Response Data:', data);
+      
+            if (response.ok) {
+              // Display the success message
+              const responseContainer = document.getElementById('responseContainer');
+              responseContainer.innerHTML = `<p>${data.message}</p>`;
+      
+              // Create a container for the buttons
+              const actionsDiv = document.createElement('div');
+              actionsDiv.style.marginTop = '20px';
+      
+              // Generate Certificate Button
+              const generateButton = document.createElement('button');
+              generateButton.textContent = 'Generate Certificate';
+              generateButton.onclick = () => window.location.href = data.actions.generateCertificate;
+              actionsDiv.appendChild(generateButton);
+      
+              // Download Certificate Button
+              const downloadButton = document.createElement('button');
+              downloadButton.textContent = 'Download Certificate';
+              downloadButton.onclick = () => window.location.href = data.actions.downloadCertificate;
+              actionsDiv.appendChild(downloadButton);
+      
+              // Append the buttons to the response container
+              responseContainer.appendChild(actionsDiv);
+            } else {
+              alert('Error: ' + data.message);
+            }
+          } catch (error) {
+            console.error('Error submitting the form:', error);
+            alert('An error occurred while submitting the form.');
+          }
+        });
+      </script>
+      
+<script src="deathCertificate.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

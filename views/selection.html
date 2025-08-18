@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+        .container {
+            margin: 50px auto;
+            max-width: 600px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            color: #333;
+        }
+        select, button {
+            margin: 20px auto;
+            padding: 10px;
+            width: 90%;
+            max-width: 300px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4c86af;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4571a0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome!</h1>
+        <p>Please select the type of certificate you want to generate:</p>
+        <form id="certificateForm">
+            <select name="certificateType" id="certificateType" required>
+                <option value="" disabled selected>-- Select Certificate Type --</option>
+                <option value="income">Income Certificate</option>
+                <option value="caste">Caste Certificate</option>
+                <option value="death">Death Certificate</option>
+            </select>
+            <button type="submit">Proceed</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('certificateForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const selectedCertificate = document.getElementById('certificateType').value;
+            if (selectedCertificate==="income") {
+                // Redirect user to the respective form page
+                window.location.href = "/income-certificate"; // if-else-if : selctedCert?income:/income
+            }else if (selectedCertificate==="caste"){
+                window.location.href = "/caste-certificate";
+            }else if (selectedCertificate==="death"){
+                window.location.href = "/death-certificate";
+            }
+            else {
+                alert("Please select a certificate type before proceeding.");
+            }
+        });
+    </script>
+</body>
+</html>
